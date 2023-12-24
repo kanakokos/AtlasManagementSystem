@@ -16,6 +16,9 @@
   <form action="{{ route('registerPost') }}" method="POST">
     <div class="w-100 vh-100 d-flex" style="align-items:center; justify-content:center;">
       <div class="w-25 vh-75 border p-3">
+        @error('mail_address')
+    <div class="alert alert-danger">{{ $message }}</div>
+@enderror
         <div class="register_form">
           <div class="d-flex mt-3" style="justify-content:space-between">
             <div class="" style="width:140px">
