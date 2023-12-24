@@ -30,11 +30,11 @@ class RegisterRequest extends FormRequest
             'under_name' => 'required|string|max:10',
             'over_name_kana' => 'required|string|regex:/\A[ァ-ヴー]+\z/u|max:30',
             'under_name_kana' => 'required|string|regex:/\A[ァ-ヴー]+\z/u|max:30',
-            'mail_address' => 'required|email|unique:users,mail|max:100',
+            'mail_address' => 'required|email|unique:users,mail_address|max:100',
             'sex' => 'required|in:1,2,3',
-            'old_year' => 'required|date|after_or_equal:2000-01-01|before_or_equal:today',
-            'old_month' => 'required|date|after_or_equal:2000-01-01|before_or_equal:today',
-            'old_day' => 'required|date|after_or_equal:2000-01-01|before_or_equal:today',
+            'old_year' => 'required|after_or_equal:2000-01-01|before_or_equal:today',
+            'old_month' => 'required|after_or_equal:2000-01-01|before_or_equal:today',
+            'old_day' => 'required|after_or_equal:2000-01-01|before_or_equal:today',
             'role' => 'required|in:1,2,3,4',
             'password' => 'required|min:8|max:30|confirmed', //regex:/^[a-zA-Z0-9]*$/|
         ];
@@ -46,7 +46,6 @@ class RegisterRequest extends FormRequest
     public function messages()
     {
         return [
-
             //over_name
             'over_name.required' => '姓は必須です',
             'over_name.string' => '姓は文字列で入力してください',
@@ -72,7 +71,7 @@ class RegisterRequest extends FormRequest
             //mail_address
             'mail_address.required' => 'メールアドレスは必須です',
             'mail_address.email' => '有効なメールアドレスを入力してください',
-            'mail_address.unique' => 'このメールアドレスは既に使用されています',
+            'mail_address.unique:users,mail_address' => 'このメールアドレスは既に使用されています',
             'mail_address.max' => 'メールアドレスは100文字以内で入力してください',
 
             //sex　
@@ -80,12 +79,12 @@ class RegisterRequest extends FormRequest
             'sex.in:1,2,3' => '性別を選択してください',
 
             //old_year,old_month,old_day　
-            'old_year.required' => '生年月日は必須です',
-            'old_month.required' => '生年月日は必須です',
-            'old_day.required' => '生年月日は必須です',
-            'old_year.date' => '生年月日が正しくありません',
-            'old_month.date' => '生年月日が正しくありません',
-            'old_day.date' => '生年月日が正しくありません',
+            'old_year.required' => '年は必須です',
+            'old_month.required' => '月は必須です',
+            'old_day.required' => '日は必須です',
+            // 'old_year.required_with:birth_month,birth_day' => '生年月日（年）が正しくありません',
+            // 'old_month.required_with:birth_year,birth_day' => '生年月日（月）が正しくありません',
+            // 'old_day.required_with:birth_year,birth_month' => '生年月日（日）が正しくありません',
             'old_year.after_or_equal:2000-01-01' => '2000年1月1日以降で選択してください',
             'old_month.after_or_equal:2000-01-01' => '2000年1月1日以降で選択してください',
             'old_day.after_or_equal:2000-01-01' => '2000年1月1日以降で選択してください',
