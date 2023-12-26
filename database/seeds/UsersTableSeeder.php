@@ -22,7 +22,7 @@ class UsersTableSeeder extends Seeder
             'sex' => '2',
             'birth_day' => '2000-01-01',
             'role' => '1',
-            'password' => '00001111',]
+            'password' => Hash::make('00001111'),]
         ]);
 
     }

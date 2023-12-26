@@ -22,24 +22,46 @@ class RegisterRequest extends FormRequest
      * @return array
      */
 
+
+    public function getValidatorInstance() {
+        //生年月日をまとめて値に直す
+        $old_year = $this->input('old_year');
+        $old_month = $this->input('old_month');
+        $old_day = $this->input('old_day');
+        $datetime = $old_year .'-'. $old_month .'-'. $old_day;
+        // 日付を作成(ex. 2020-1-20)
+        //$datetime_validation = implode('-', $datetime);
+
+        // rules()に渡す値を追加でセット
+        //これで、この場で作った変数にもバリデーションを設定できるようになる
+        $this->merge([
+            'datetime_validation' => $datetime,
+        ]);
+
+        return parent::getValidatorInstance();
+        //ここで定義した変数はここでしか使えないようにしている(parentで返しているのがこのメソッドなので)
+    }
+
             //ここからバリデーションルール
     public function rules()
     {
         return [
             'over_name' => 'required|string|max:10',
             'under_name' => 'required|string|max:10',
-            'over_name_kana' => 'required|string|regex:/\A[ァ-ヴー]+\z/u|max:30',
-            'under_name_kana' => 'required|string|regex:/\A[ァ-ヴー]+\z/u|max:30',
-            'mail_address' => 'required|email|unique:users,mail_address|max:100',
+            'over_name_kana' => 'required|string|max:30|regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u',
+            'under_name_kana' => 'required|string|max:30|regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u',
+            'mail_address' => 'required|unique:users|max:100|email',
             'sex' => 'required|in:1,2,3',
-            'old_year' => 'required|after_or_equal:2000-01-01|before_or_equal:today',
-            'old_month' => 'required|after_or_equal:2000-01-01|before_or_equal:today',
-            'old_day' => 'required|after_or_equal:2000-01-01|before_or_equal:today',
+            //ラジオボタンの値を入れる（要：bladeのvalue確認）
+            //生年月日　ヒントまず日にちの形に成型するそれからバリデーションをかける
+            'datetime_validation' => 'required|date|after:1999-12-31|before:tomorrow',
             'role' => 'required|in:1,2,3,4',
-            'password' => 'required|min:8|max:30|confirmed', //regex:/^[a-zA-Z0-9]*$/|
+            'password' => 'required|min:8|max:30|confirmed:password',
+            'password_confirmation' => 'required|min:8|max:30'
         ];
-    }
 
+
+    }
 
 
             //ここからエラーメッセージ
@@ -47,61 +69,20 @@ class RegisterRequest extends FormRequest
     {
         return [
             //over_name
-            'over_name.required' => '姓は必須です',
-            'over_name.string' => '姓は文字列で入力してください',
-            'over_name.max' => '姓は10文字以内で入力してください',
-
-            //under_name
-            'under_name.required' => '名は必須です',
-            'under_name.string' => '名は文字列で入力してください',
-            'under_name.max' => '名は10文字以内で入力してください',
-
-            //over_name_kana
-            'over_name_kana.required' => 'セイは必須です',
-            'over_name_kana.string' => 'セイは文字列で入力してください',
-            'over_name_kana.regex:/\A[ァ-ヴー]+\z/u' => 'セイはカナで入力してください',
-            'over_name_kana.max' => 'セイは30文字以内で入力してください',
-
-            //under_name_kana
-            'under_name_kana.required' => '名は必須です',
-            'under_name_kana.string' => '名は文字列で入力してください',
-            'under_name_kana.regex:/\A[ァ-ヴー]+\z/u' => 'セイはカナで入力してください',
-            'under_name_kana.max' => '名は30文字以内で入力してください',
-
-            //mail_address
-            'mail_address.required' => 'メールアドレスは必須です',
-            'mail_address.email' => '有効なメールアドレスを入力してください',
-            'mail_address.unique:users,mail_address' => 'このメールアドレスは既に使用されています',
-            'mail_address.max' => 'メールアドレスは100文字以内で入力してください',
-
-            //sex　
-            'sex.required' => '性別は必須です',
-            'sex.in:1,2,3' => '性別を選択してください',
-
-            //old_year,old_month,old_day　
-            'old_year.required' => '年は必須です',
-            'old_month.required' => '月は必須です',
-            'old_day.required' => '日は必須です',
-            // 'old_year.required_with:birth_month,birth_day' => '生年月日（年）が正しくありません',
-            // 'old_month.required_with:birth_year,birth_day' => '生年月日（月）が正しくありません',
-            // 'old_day.required_with:birth_year,birth_month' => '生年月日（日）が正しくありません',
-            'old_year.after_or_equal:2000-01-01' => '2000年1月1日以降で選択してください',
-            'old_month.after_or_equal:2000-01-01' => '2000年1月1日以降で選択してください',
-            'old_day.after_or_equal:2000-01-01' => '2000年1月1日以降で選択してください',
-            'old_year.before_or_equal:today' => '本日以前で選択してください',
-            'old_month.before_or_equal:today' => '本日以前で選択してください',
-            'old_day.before_or_equal:today' => '本日以前で選択してください',
-
-            //role
-            'role.required' => '役職は必須です',
-            'role.in:1,2,3,4' => '役職を選択してください',
-
-            //password
-            'password.required' => 'パスワードは必須です',
-            'password.min' => 'パスワードは8文字以上で入力してください',
-            'password.max' => 'パスワードは30文字以内で入力してください',
-            'password.confirmed' => 'パスワードを再度入力してください',
-
+            "required" => "必須項目です",
+            "email" => "メールアドレスの形式で入力してください",
+            "regex" => "全角カタカナで入力してください",
+            "string" => "文字で入力してください",
+            "max" => "30文字以内で入力してください",
+            "over_name.max" => "10文字以内で入力してください",
+            "under_name.max" => "10文字以内で入力してください",
+            "min" => "8文字以上で入力してください",
+            "mail_address.max" => "100文字以内で入力してください",
+            "unique" => "登録済みのメールアドレスは無効です",
+            "confirmed" => "パスワード確認が一致しません",
+            "datetime_validation.date" => "有効な日付に直してください",
+            "datetime_validation.after" => "2000年1月1日から今日までの日付を入力してください",
+            "datetime_validation.before" => "2000年1月1日から今日までの日付を入力してください"
         ];
     }
 
