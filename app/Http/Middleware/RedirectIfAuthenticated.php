@@ -22,6 +22,11 @@ class RedirectIfAuthenticated
             return redirect(RouteServiceProvider::HOME);
         }
 
+        // タイムアウトした場合の処理を追加
+        if (Auth::guard($guard)->guest()) {
+            return redirect()->route('login');
+        }
+
         return $next($request);
     }
 }
