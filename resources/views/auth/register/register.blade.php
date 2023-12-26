@@ -24,23 +24,23 @@
               <div class="border-bottom border-primary" style="width:140px;">
                 <input type="text" style="width:140px;" class="border-0 over_name" name="over_name">
               </div>
+              @if($errors->has('over_name'))
+                <div style="font-size: 13px; color: red;">
+                  {{ $errors->first('over_name') }}
+                </div>
+              @endif
             </div>
             <div class="" style="width:140px">
               <label class=" d-block m-0" style="font-size:13px">名</label>
               <div class="border-bottom border-primary" style="width:140px;">
                 <input type="text" style="width:140px;" class="border-0 under_name" name="under_name">
               </div>
-            </div>
-              @if($errors->has('over_name'))
-                <div style="font-size: 13px; color: red;">
-                  {{ $errors->first('over_name') }}
-                </div>
-              @endif
               @if($errors->has('under_name'))
                 <div style="font-size: 13px; color: red;">
                   {{ $errors->first('under_name') }}
                 </div>
               @endif
+            </div>
           </div>
 
           <div class="d-flex mt-3" style="justify-content:space-between">
@@ -49,23 +49,23 @@
               <div class="border-bottom border-primary" style="width:140px;">
                 <input type="text" style="width:140px;" class="border-0 over_name_kana" name="over_name_kana">
               </div>
+              @if($errors->has('over_name_kana'))
+                <div style="font-size: 13px; color: red;">
+                  {{ $errors->first('over_name_kana') }}
+                </div>
+              @endif
             </div>
             <div class="" style="width:140px">
               <label class="d-block m-0" style="font-size:13px">メイ</label>
               <div class="border-bottom border-primary" style="width:140px;">
                 <input type="text" style="width:140px;" class="border-0 under_name_kana" name="under_name_kana">
               </div>
+              @if($errors->has('under_name_kana'))
+                <div style="font-size: 13px; color: red;">
+                  {{ $errors->first('under_name_kana') }}
+                </div>
+              @endif
             </div>
-            @if($errors->has('over_name_kana'))
-              <div style="font-size: 13px; color: red;">
-                {{ $errors->first('over_name_kana') }}
-              </div>
-            @endif
-            @if($errors->has('under_name_kana'))
-              <div style="font-size: 13px; color: red;">
-                {{ $errors->first('under_name_kana') }}
-              </div>
-            @endif
           </div>
 
           <div class="mt-3">
@@ -179,19 +179,9 @@
           </select>
           <label style="font-size:13px">月</label>
         </div>
-        @if($errors->has('old_year'))
+        @if($errors->has('datetime_validation'))
           <div style="font-size: 13px; color: red;">
-            {{ $errors->first('old_year') }}
-          </div>
-        @endif
-        @if($errors->has('old_month'))
-          <div style="font-size: 13px; color: red;">
-            {{ $errors->first('old_month') }}
-          </div>
-        @endif
-        @if($errors->has('old_day'))
-          <div style="font-size: 13px; color: red;">
-            {{ $errors->first('old_day') }}
+            {{ $errors->first('datetime_validation') }}
           </div>
         @endif
 
