@@ -58,6 +58,12 @@ class PostsController extends Controller
     }
 
     public function postEdit(Request $request){
+
+        $request->validate([
+            'post_title' => 'required|string|max:100',
+            'post_body' => 'required|string|max:5000',
+        ]);
+
         Post::where('id', $request->post_id)->update([
             'post_title' => $request->post_title,
             'post' => $request->post_body,
