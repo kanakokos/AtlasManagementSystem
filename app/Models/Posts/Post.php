@@ -3,6 +3,7 @@
 namespace App\Models\Posts;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Post extends Model
 {
@@ -31,4 +32,22 @@ class Post extends Model
     public function commentCounts($post_id){
         return Post::with('postComments')->find($post_id)->postComments();
     }
+
+
+
+    // いいねのリレーション
+    public function likes(): HasMany
+    {
+        return $this->hasMany('App\Models\Posts\Like', 'like_post_id');
+    }
+
+    // いいねの数を取得するメソッド
+    public function likeCount()
+    {
+        return $this->likes()->count();
+    }
+
+
+
+
 }
