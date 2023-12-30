@@ -155,7 +155,8 @@ return [
 
     'attributes' => [
         'post_title' => 'タイトル',
-        'post_body' => '投稿'
+        'post_body' => '投稿',
+        'comment' => 'コメント'
     ],
 
 ];

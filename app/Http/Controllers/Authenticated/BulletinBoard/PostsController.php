@@ -43,6 +43,7 @@ class PostsController extends Controller
         return view('authenticated.bulletinboard.post_detail', compact('post'));
     }
 
+    //投稿
     public function postInput(){
         $main_categories = MainCategory::get();
         return view('authenticated.bulletinboard.post_create', compact('main_categories'));
@@ -57,6 +58,7 @@ class PostsController extends Controller
         return redirect()->route('post.show');
     }
 
+    //投稿更新
     public function postEdit(Request $request){
 
         $request->validate([
@@ -71,6 +73,7 @@ class PostsController extends Controller
         return redirect()->route('post.detail', ['id' => $request->post_id]);
     }
 
+    //投稿削除
     public function postDelete($id){
         Post::findOrFail($id)->delete();
         return redirect()->route('post.show');
@@ -80,7 +83,13 @@ class PostsController extends Controller
         return redirect()->route('post.input');
     }
 
+    //コメント
     public function commentCreate(Request $request){
+
+        $request->validate([
+            'comment' => 'required|string|max:2500',
+        ]);
+
         PostComment::create([
             'post_id' => $request->post_id,
             'user_id' => Auth::id(),
