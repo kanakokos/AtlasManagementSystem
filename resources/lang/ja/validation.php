@@ -159,7 +159,8 @@ return [
         'comment' => 'コメント',
         'main_category_name' => 'メインカテゴリー',
         'main_category_id' => 'メインカテゴリー',
-        'sub_category_name' => 'サブカテゴリー'
+        'sub_category_name' => 'サブカテゴリー',
+        'sub_category_id' => 'カテゴリー'
     ],
 
 ];

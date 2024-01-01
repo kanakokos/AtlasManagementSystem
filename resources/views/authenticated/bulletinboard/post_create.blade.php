@@ -7,12 +7,6 @@
       @if($errors->first('sub_category_id'))
         <span class="error_message">{{ $errors->first('sub_category_id') }}</span>
       @endif
-      @if($errors->first('post_title'))
-        <span class="error_message">{{ $errors->first('post_title') }}</span>
-      @endif
-      @if($errors->first('post_body'))
-        <span class="error_message">{{ $errors->first('post_body') }}</span>
-      @endif
       <p class="mb-0">カテゴリー</p>
       <select id="categorySelect" class="w-100" form="postCreate" name="sub_category_id">
         <option value=""></option>

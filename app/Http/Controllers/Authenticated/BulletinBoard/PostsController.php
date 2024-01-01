@@ -59,13 +59,16 @@ class PostsController extends Controller
         'user_id' => Auth::id(),
         'post_title' => $request->post_title,
         'post' => $request->post_body,
-
-        'sub_category_id' => $request->sub_category_id,
-        // 'main_category_id' => $mainCategoryId,
-    ]);
+        // 'sub_category_id' => $request->sub_category_id,
+]);
+// dd($request->sub_category_id);
+    // 中間テーブルにサブカテゴリーを追加
+    // $post->subCategories()->attach($request->sub_category_id);
+    $post->subCategories()->attach($request->sub_category_id);
 
     return redirect()->route('post.show');
 }
+
 
     //投稿更新
     public function postEdit(Request $request){
@@ -82,11 +85,13 @@ class PostsController extends Controller
         return redirect()->route('post.detail', ['id' => $request->post_id]);
     }
 
+
     //投稿削除
     public function postDelete($id){
         Post::findOrFail($id)->delete();
         return redirect()->route('post.show');
     }
+
 
     //メインカテゴリーの登録
     public function mainCategoryCreate(Request $request){
@@ -97,6 +102,7 @@ class PostsController extends Controller
         MainCategory::create(['main_category' => $request->main_category_name]);
         return redirect()->route('post.input');
     }
+
 
     //サブカテゴリーの登録
     public function subCategoryCreate(Request $request){
@@ -117,6 +123,7 @@ class PostsController extends Controller
         ]);
         return redirect()->route('post.input');
     }
+
 
     //コメント
     public function commentCreate(Request $request){
