@@ -24,17 +24,18 @@ class PostFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'post_title' => 'min:4|max:50',
-            'post_body' => 'min:10|max:500',
+            'post_title' => 'required|max:100',
+            'post_body' => 'required|max:5000',
+            'sub_category_id' => 'exists:sub_categories,id',
         ];
     }
 
     public function messages(){
         return [
-            'post_title.min' => 'タイトルは4文字以上入力してください。',
-            'post_title.max' => 'タイトルは50文字以内で入力してください。',
-            'post_body.min' => '内容は10文字以上入力してください。',
-            'post_body.max' => '最大文字数は500文字です。',
+            "required" => "必須項目です",
+            'post_title.max' => 'タイトルは100文字以内で入力してください。',
+            'post_body.max' => '最大文字数は5000文字です。',
+            'sub_category_id.exists:sub_categories,id' => '登録されているカテゴリーを選択してください。',
         ];
     }
 }

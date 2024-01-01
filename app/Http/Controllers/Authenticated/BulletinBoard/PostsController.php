@@ -54,25 +54,18 @@ class PostsController extends Controller
 
     //投稿
     public function postCreate(PostFormRequest $request){
-        // 新しいメインカテゴリーを入力した場合
-    if (!empty($request->main_category_name)) {
-        $mainCategory = MainCategory::create(['main_category' => $request->main_category_name]);
-        $mainCategoryId = $mainCategory->id;
-    } else {
-        $mainCategoryId = null;
-    }
 
-    // ここで $mainCategoryId を使って投稿を作成する処理を行う
     $post = Post::create([
         'user_id' => Auth::id(),
         'post_title' => $request->post_title,
         'post' => $request->post_body,
-        'sub_category_id' => $request->post_sub_category_id, // サブカテゴリーのIDを保存
-        'main_category_id' => $mainCategoryId, // 新しいメインカテゴリーが入力された場合、関連付けられたメインカテゴリーのIDを保存
+
+        'sub_category_id' => $request->sub_category_id,
+        // 'main_category_id' => $mainCategoryId,
     ]);
 
     return redirect()->route('post.show');
-    }
+}
 
     //投稿更新
     public function postEdit(Request $request){
