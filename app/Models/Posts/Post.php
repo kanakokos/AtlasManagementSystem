@@ -54,8 +54,4 @@ class Post extends Model
         return $this->likes()->count();
     }
 
-
-
-
-
 }

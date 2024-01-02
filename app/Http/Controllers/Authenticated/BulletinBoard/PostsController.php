@@ -156,7 +156,17 @@ class PostsController extends Controller
     }
 
     //サブカテゴリー絞り込み
-    public function categoryBulletinBoard(){
+    public function categoryBulletinBoard(Request $request){
+        dd($request);
+        $selectedSubCategory = $request->input('sub_categories_btn');
+
+        $posts = SubCategory::where('sub_category', $selectedSubCategory)->first()->posts;
+
+        // $posts = SubCategory::where('sub_category_id', $selectedSubCategory)->get();
+        // $posts = Post::with('post')->whereIn('sub_category_id', $selectedSubCategory)->get();
+        // $posts = Post::with('post')->whereIn('id', $selectedSubCategory)->get();
+
+        return view('category.bulletin.board', compact('posts'));
     }
 
     //検索機能

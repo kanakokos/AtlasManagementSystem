@@ -39,7 +39,7 @@
         <span>権限 : </span><span>教師(数学)</span>
         @elseif($user->role == 3)
         <span>権限 : </span><span>講師(英語)</span>
-        @else
+        @else($user->role == 4)
         <span>権限 : </span><span>生徒</span>
         @endif
       </div>
