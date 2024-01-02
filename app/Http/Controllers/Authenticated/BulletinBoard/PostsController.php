@@ -63,7 +63,6 @@ class PostsController extends Controller
 ]);
 // dd($request->sub_category_id);
     // 中間テーブルにサブカテゴリーを追加
-    // $post->subCategories()->attach($request->sub_category_id);
     $post->subCategories()->attach($request->sub_category_id);
 
     return redirect()->route('post.show');
@@ -140,18 +139,34 @@ class PostsController extends Controller
         return redirect()->route('post.detail', ['id' => $request->post_id]);
     }
 
+
+    //自分の投稿絞り込み
     public function myBulletinBoard(){
         $posts = Auth::user()->posts()->get();
         $like = new Like;
         return view('authenticated.bulletinboard.post_myself', compact('posts', 'like'));
     }
 
+    //いいねした投稿絞り込み
     public function likeBulletinBoard(){
         $like_post_id = Like::with('users')->where('like_user_id', Auth::id())->get('like_post_id')->toArray();
         $posts = Post::with('user')->whereIn('id', $like_post_id)->get();
         $like = new Like;
         return view('authenticated.bulletinboard.post_like', compact('posts', 'like'));
     }
+
+    //サブカテゴリー絞り込み
+    public function categoryBulletinBoard(){
+    }
+
+    //検索機能
+    public function searchBulletinBoard(Request $request)
+    {
+        $keyword = $request->input('keyword');
+        $subCategories = SubCategory::where("keyword", "=", $keyword)->get();
+        return view('post.search', compact('posts', 'keyword'));
+    }
+
 
     //いいね
     public function postLike(Request $request){
