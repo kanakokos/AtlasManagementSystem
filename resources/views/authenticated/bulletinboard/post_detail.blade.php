@@ -28,6 +28,9 @@
         </div>
         <div class="detsail_post_title">{{ $post->post_title }}</div>
         <div class="mt-3 detsail_post">{{ $post->post }}</div>
+        @foreach($post->subCategories as $subCategory)
+        <div>カテゴリー：{{ $subCategory->sub_category }}</div>
+        @endforeach
       </div>
       <div class="p-3">
         <div class="comment_container">
@@ -38,6 +41,7 @@
               <span>{{ $comment->commentUser($comment->user_id)->over_name }}</span>
               <span>{{ $comment->commentUser($comment->user_id)->under_name }}</span>さん
             </p>
+            <!-- <p>{{ $comment->created_at }}</p> -->
             <p>{{ $comment->comment }}</p>
           </div>
           @endforeach
