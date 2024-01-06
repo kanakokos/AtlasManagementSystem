@@ -15,14 +15,16 @@ class UsersController extends Controller
 {
 
     public function showUsers(Request $request){
+        // dd($request);
         $keyword = $request->keyword;
         $category = $request->category;
         $updown = $request->updown;
         $gender = $request->sex;
         $role = $request->role;
-        $subjects = null;// ここで検索時の科目を受け取る
+        // $subjects = null;// ここで検索時の科目を受け取る
+        $subjects = $request->input('subject');
         $userFactory = new SearchResultFactories();
-        $users = $userFactory->initializeUsers($keyword, $category, $updown, $gender, $role, $subjects);
+        $users = $userFactory->initializeUsers($keyword, $category, $updown, $gender, $role, $subjects);  //initializeUsers=ディレクトリの初期化
         $subjects = Subjects::all();
         return view('authenticated.users.search', compact('users', 'subjects'));
     }

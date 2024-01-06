@@ -16,14 +16,22 @@ class SelectNames implements DisplayUsers{
     }else{
       $role = array($role);
     }
+
+    // if(empty($subjects)){
+    //   $subjects = ['1', '2', '3'];
+    // }else{
+    //   $subjects = array($subjects);
+    // }
+
     $users = User::with('subjects')
     ->where(function($q) use ($keyword){
       $q->where('over_name', 'like', '%'.$keyword.'%')
-      ->orWhere('under_name', 'like', '%'.$keyword.'%')
+      ->orWhere('under_name', 'like', '%'.$keyword.'%')  //orWhere＝または
       ->orWhere('over_name_kana', 'like', '%'.$keyword.'%')
       ->orWhere('under_name_kana', 'like', '%'.$keyword.'%');
-    })->whereIn('sex', $gender)
+    })->whereIn('sex', $gender) //whereIn＝いずれかの値と一致
     ->whereIn('role', $role)
+    // ->whereIn('subjects', $subjects)
     ->orderBy('over_name_kana', $updown)->get();
 
     return $users;

@@ -156,11 +156,18 @@ class PostsController extends Controller
     }
 
     //サブカテゴリー絞り込み
-    public function categoryBulletinBoard(Request $request){
-        dd($request);
-        $selectedSubCategory = $request->input('sub_categories_btn');
+    public function categoryBulletinBoard(){
+        // dd($request);
 
-        $posts = SubCategory::where('sub_category', $selectedSubCategory)->first()->posts;
+        $sub_category_id = subCategory::with('posts')->where('sub_category_id')->get('categories_posts')->toArray();
+        $posts = Post::with('user')->whereIn('id', $sub_category_id)->get();
+        $subCategory = new subCategory;
+
+
+        // $selectedSubCategory = $request->input('categories_posts');
+
+        // $posts = SubCategory::where('sub_category', $selectedSubCategory)->first()->posts;
+
 
         // $posts = SubCategory::where('sub_category_id', $selectedSubCategory)->get();
         // $posts = Post::with('post')->whereIn('sub_category_id', $selectedSubCategory)->get();

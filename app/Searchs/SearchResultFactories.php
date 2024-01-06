@@ -11,7 +11,8 @@ class SearchResultFactories{
       if(is_null($subjects)){
         $searchResults = new SelectNames();
       }else{
-        $searchResults = new SelectNameDetails();
+        $searchResults = new SelectNameDetails();  //インスタンス化（use宣言箇所でたどって確認）
+
       }
       return $searchResults->resultUsers($keyword, $category, $updown, $gender, $role, $subjects);
     }else if($category == 'id'){
