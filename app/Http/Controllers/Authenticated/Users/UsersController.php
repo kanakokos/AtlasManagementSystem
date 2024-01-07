@@ -23,6 +23,7 @@ class UsersController extends Controller
         $role = $request->role;
         // $subjects = null;// ここで検索時の科目を受け取る
         $subjects = $request->input('subject');
+        // dd($subjects);
         $userFactory = new SearchResultFactories();
         $users = $userFactory->initializeUsers($keyword, $category, $updown, $gender, $role, $subjects);  //initializeUsers=ディレクトリの初期化
         $subjects = Subjects::all();

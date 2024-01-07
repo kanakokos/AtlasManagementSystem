@@ -34,9 +34,21 @@ class PostsController extends Controller
         }else if($request->my_posts){
             $posts = Post::with('user', 'postComments')
             ->where('user_id', Auth::id())->get();
+        //↓↓追加
+        }else if($request->categories_posts){
+            // dd($request);
+            $categories_posts = $request->categories_posts;
+            // dd($categories_posts);
+            $posts = Post::with('user', 'subCategories')  //最終的に使うメソッド（リレーション）たち。指定したからと言ってwhereHasなしで使えるわけじゃない
+            ->whereHas('subCategories', function($q) use ($categories_posts){  //whereHasがないとPostのカラム名しか↓で呼び出せない（逆にwhereHasがあれば中間テーブル、relation先も呼び出せる）
+            $q->where('sub_categories.sub_category', $categories_posts);  //中間テーブルなどのカラム名の場合「テーブル名.カラム名」の記述になる（迷子になってしまうため）
+            })
+            ->get();
         }
+
         return view('authenticated.bulletinboard.posts', compact('posts', 'categories', 'like', 'post_comment'));
     }
+
 
     public function postDetail($post_id){
         $post = Post::with('user', 'postComments')->findOrFail($post_id);
@@ -163,12 +175,8 @@ class PostsController extends Controller
         $posts = Post::with('user')->whereIn('id', $sub_category_id)->get();
         $subCategory = new subCategory;
 
-
         // $selectedSubCategory = $request->input('categories_posts');
-
         // $posts = SubCategory::where('sub_category', $selectedSubCategory)->first()->posts;
-
-
         // $posts = SubCategory::where('sub_category_id', $selectedSubCategory)->get();
         // $posts = Post::with('post')->whereIn('sub_category_id', $selectedSubCategory)->get();
         // $posts = Post::with('post')->whereIn('id', $selectedSubCategory)->get();
