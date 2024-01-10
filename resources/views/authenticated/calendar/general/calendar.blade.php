@@ -15,4 +15,28 @@
     </div>
   </div>
 </div>
+
+
+<!-- 投稿編集モーダル -->
+<div class="modal js-modal">
+  <div class="modal__bg js-modal-close"></div>
+  <div class="modal__content">
+    <form action="{{ route('deleteParts') }}" method="post">
+      <div class="w-100">
+        <div class="modal-inner-title w-50 m-auto">
+          <p>予約日：</p>
+          <p>時間：</p>
+          <p>上記の予約をキャンセルしてもよろしいですか？</p>
+        </div>
+        <div class="w-50 m-auto delete-modal-btn d-flex">
+          <a class="js-modal-close btn btn-primary d-inline-block" href="">閉じる</a>
+          <input type="submit" class="btn btn-danger d-block" value="キャンセル">
+          <input type="hidden" class="delete-modal-hidden" name="post_id" value="">
+        </div>
+      </div>
+      {{ csrf_field() }}
+    </form>
+  </div>
+</div>
+
 @endsection
