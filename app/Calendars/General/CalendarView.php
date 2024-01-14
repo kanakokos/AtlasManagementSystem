@@ -84,6 +84,7 @@ class CalendarView{
       //過去の日程で予約していない場合
         }else if(!in_array($day->everyDay(), $day->authReserveDay()) && $startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
           $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px">受付終了</p>';
+          $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
 
         }else{  //予約プルダウン
           $html[] = $day->selectPart($day->everyDay());
