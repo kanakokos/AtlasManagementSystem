@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 use App\Models\Posts\Like;
+use App\Models\Calenders\ReserveSettings;
 use Auth;
 
 class User extends Authenticatable

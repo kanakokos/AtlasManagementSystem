@@ -77,7 +77,10 @@ class CalendarView{
             }
 
           }else{  //予約済みのボタン
-            $html[] = '<div class="delete-modal-open"><button type="submit" class="btn btn-danger p-0 w-75 js-modal" name="delete_date" style="font-size:12px" value="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'">'. $reservePart .'</button></div>';
+            $html[] = '<div class="delete-modal-open"  reserve_part="'. $day->authReserveDate($day->everyDay())->first()->setting_part .'" reserve_date="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'"><button type="submit" class="btn btn-danger p-0 w-75 " name="delete_date" style="font-size:12px" value="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'">
+            '. $reservePart .'</button></div>';
+            // dd($reservePart);
+
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }
 

@@ -36,4 +36,14 @@ class CalendarsController extends Controller
         }
         return redirect()->route('calendar.general.show', ['user_id' => Auth::id()]);
     }
+
+    //編集中
+    public function delete($id)
+    {
+        Post::where('id', $id)->delete();
+        return redirect('top');
+    }
+
+
+
 }

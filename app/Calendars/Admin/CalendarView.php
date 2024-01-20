@@ -33,6 +33,9 @@ class CalendarView{
 
     $weeks = $this->getWeeks();
 
+
+    //スクール予約確認画面
+
     foreach($weeks as $week){
       $html[] = '<tr class="'.$week->getClassName().'">';
       $days = $week->getDays();
@@ -44,8 +47,10 @@ class CalendarView{
         }else{
           $html[] = '<td class="border '.$day->getClassName().'">';
         }
-        $html[] = $day->render();
-        $html[] = $day->dayPartCounts($day->everyDay());
+        //カレンダーの中身
+        $html[] = $day->render();  //日にち
+        $html[] = $day->dayPartCounts($day->everyDay());  //部数
+        // $html[] = '<a href="" value="'. $day->dayPartCounts($day->everyDay()).'"></a>';  //部数
         $html[] = '</td>';
       }
       $html[] = '</tr>';
