@@ -9,10 +9,12 @@
         <tr class="text-center">
           <th class="w-25">ID</th>
           <th class="w-25">名前</th>
+          <th class="w-25">場所</th>
         </tr>
         <tr class="text-center">
-          <td class="w-25"></td>
-          <td class="w-25"></td>
+          <td class="w-25">id入れるよ</td>
+          <td class="w-25">名前入れるよ</td>
+          <td class="w-25">場所入れるよ</td>
         </tr>
       </table>
     </div>

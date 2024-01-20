@@ -11,7 +11,7 @@
       <div class="post_bottom_area d-flex">
         <div class="d-flex post_status">
           @foreach($post->subCategories as $subCategory)
-            <p>カテゴリー：{{ $subCategory->sub_category }}</p>
+            <p class="category_btn">{{ $subCategory->sub_category }}</p>
           @endforeach
           <div class="mr-5">
             <i class="fa fa-comment"></i><span class="">{{ $post->commentCount() }}</span>
@@ -30,7 +30,7 @@
   </div>
   <div class="other_area border w-25">
     <div class="border m-4">
-      <div class=""><a href="{{ route('post.input') }}">投稿</a></div>
+      <div class="btn btn-primary"><a href="{{ route('post.input') }}">投稿</a></div>
       <div class="">
         <input type="text" placeholder="キーワードを検索" name="keyword" form="postSearchRequest">
         <input type="submit" value="検索" form="postSearchRequest">
