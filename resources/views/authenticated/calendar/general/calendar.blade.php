@@ -22,6 +22,7 @@
   <div class="modal__bg js-modal-close"></div>
   <div class="modal__content">
     <form action="{{ route('deleteParts') }}" method="post">
+      @csrf
       <div class="w-100">
         <div class="modal-inner-title w-50 m-auto">
           <p>予約日：<span class="reserve_date"><input type="hidden" name="date" class="reserve_date" value=""></p>
@@ -31,7 +32,10 @@
         <div class="w-50 m-auto delete-modal-btn d-flex">
           <a class="js-modal-close btn btn-primary d-inline-block" href="">閉じる</a>
           <input type="submit" class="m-auto btn btn-danger d-block" href="/delete/calendar"  value="キャンセル">
-          <input type="hidden" class="delete-modal-hidden" name="post_id" value="">
+          <!-- <input type="hidden" class="delete-modal-hidden" name="date" value="">
+          <input type="hidden" class="delete-modal-hidden" name="part" value=""> -->
+          <input type="hidden" name="date" class="reserve_date" value="">
+          <input type="hidden" name="part" class="reserve_part" value="">
         </div>
       </div>
     </form>
