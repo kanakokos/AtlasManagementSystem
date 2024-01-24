@@ -31,15 +31,18 @@ class CalendarWeekDay{
 
     $html[] = '<div class="text-left">';
     if($one_part){
-      $html[] = '<a href="/calendar/{date}/{part}" class="day_part m-0 pt-1">1部</a><br>';
+      // $html[] = '<a href="{{ route(calendar.admin.detail,[$date->date,$part->part])}}" class="day_part m-0 pt-1">1部</a><br>';
+      $html[] = '<a href="'.route('calendar.admin.detail', ['date'=>$ymd,'part'=>'1']).'" class="day_part m-0 pt-1">1部 </a><br>';
     }
     if($two_part){
-      $html[] = '<a href="/calendar/{date}/{part}" class="day_part m-0 pt-1">2部</a><br>';
+      // $html[] = '<a href="/calendar/{date}/{part}" class="day_part m-0 pt-1">2部</a><br>';
+      $html[] = '<a href="'.route('calendar.admin.detail', ['date'=>$ymd,'part'=>'2']).'" class="day_part m-0 pt-1">2部 </a><br>';
     }
     if($three_part){
-      $html[] = '<a href="/calendar/{date}/{part}" class="day_part m-0 pt-1">3部</a><br>';
+      // $html[] = '<a href="/calendar/{date}/{part}" class="day_part m-0 pt-1">3部</a><br>';
+      $html[] = '<a href="'.route('calendar.admin.detail', ['date'=>$ymd,'part'=>'3']).'" class="day_part m-0 pt-1">3部 </a><br>';
     }
-    $html[] = '</>';
+    $html[] = '</p>';
 
     return implode("", $html);
   }
