@@ -34,15 +34,15 @@ class CalendarWeekDay{
       //dd($one_part);
 
       // $html[] = '<a href="{{ route(calendar.admin.detail,[$date->date,$part->part])}}" class="day_part m-0 pt-1">1部</a><br>';
-      $html[] = '<a href="'.route('calendar.admin.detail', ['date'=>$ymd,'part'=>'1']).'" class="day_part m-0 pt-1">1部 </a><a>'.$one_part->users->count().'</a><br>';
+      $html[] = '<a href="'.route('calendar.admin.detail', ['date'=>$ymd,'part'=>'1']).'" class="day_part m-0 pt-1">1部 </a><a class="day_part m-0 pt-1">'.$one_part->users->count().'</a><br>';
     }
     if($two_part){
       // $html[] = '<a href="/calendar/{date}/{part}" class="day_part m-0 pt-1">2部</a><br>';
-      $html[] = '<a href="'.route('calendar.admin.detail', ['date'=>$ymd,'part'=>'2']).'" class="day_part m-0 pt-1">2部 </a><a>'.$two_part->users->count().'</a><br>';
+      $html[] = '<a href="'.route('calendar.admin.detail', ['date'=>$ymd,'part'=>'2']).'" class="day_part m-0 pt-1">2部 </a><a class="day_part m-0 pt-1">'.$two_part->users->count().'</a><br>';
     }
     if($three_part){
       // $html[] = '<a href="/calendar/{date}/{part}" class="day_part m-0 pt-1">3部</a><br>';
-      $html[] = '<a href="'.route('calendar.admin.detail', ['date'=>$ymd,'part'=>'3']).'" class="day_part m-0 pt-1">3部 </a><a>'.$three_part->users->count().'</a><br>';
+      $html[] = '<a href="'.route('calendar.admin.detail', ['date'=>$ymd,'part'=>'3']).'" class="day_part m-0 pt-1">3部 </a><a class="day_part m-0 pt-1">'.$three_part->users->count().'</a><br>';
     }
     $html[] = '</p>';
 

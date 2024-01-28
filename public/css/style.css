@@ -16,6 +16,9 @@ li {
   list-style: none;
 }
 
+.register_form {}
+
+
 /* サイドバー */
 .sidebar {
   width: 150px;
@@ -38,7 +41,12 @@ li {
   border-radius: 10px 10px 10px 10px;
 }
 
-
+/* ログインページのロゴ */
+.atlas_logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 /* トップページ */
 .user_status {
