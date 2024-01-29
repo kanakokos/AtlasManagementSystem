@@ -96,8 +96,6 @@ li {
   font-size: 13px;
 }
 
-
-
 .adjust-table td {
   padding: 0 !important;
 }
@@ -121,7 +119,34 @@ li {
 
 
 /* スクール参加者詳細画面 */
+.reserve_detail table {
+  width: 100%;
+  table-layout: fixed;
+  /* テーブルの横幅を均等に設定 */
+}
 
+.reserve_detail table th,
+.reserve_detail table td {
+  width: 33.33%;
+  /* セルの横幅を均等に設定 */
+  box-sizing: border-box;
+  /* ボーダーボックスモデルを使用して、paddingやborderも含めた横幅にする */
+}
+
+.reserve_detail table td {
+  background: #fff;
+}
+
+.reserve_detail table tr:nth-child(odd) td {
+  background: #E1F6F7;
+}
+
+.reserve_detail {
+  box-shadow: 0 0 8px gray;
+  border-radius: 10px;
+  background-color: #FFF;
+  padding: 10px;
+}
 
 
 /* モーダル */

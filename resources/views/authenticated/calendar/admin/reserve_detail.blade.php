@@ -4,9 +4,9 @@
 <div class="vh-100 d-flex" style="align-items:center; justify-content:center;">
   <div class="w-50 m-auto h-75">
     <p><span>{{$date}}</span><span class="ml-3">{{$part}}部</span></p>
-    <div class="h-75 border">
-      <table class="">
-        <tr class="text-center">
+    <div class="reserve_detail">
+      <table class="reserve_detail_table">
+        <tr class="text-center" style="background-color: #03AAD2; color: #FFF;">
           <th class="w-25">ID</th>
           <th class="w-25">名前</th>
           <th class="w-25">場所</th>
