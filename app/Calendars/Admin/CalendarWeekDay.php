@@ -29,12 +29,12 @@ class CalendarWeekDay{
     $two_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', '2')->first();
     $three_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', '3')->first();
 
-    $html[] = '<div class="text-left">';
+    $html[] = '<div class="text-left" style="height:80px;">';
     if($one_part){
       //dd($one_part);
 
       // $html[] = '<a href="{{ route(calendar.admin.detail,[$date->date,$part->part])}}" class="day_part m-0 pt-1">1部</a><br>';
-      $html[] = '<a href="'.route('calendar.admin.detail', ['date'=>$ymd,'part'=>'1']).'" class="day_part m-0 pt-1">1部 </a><a class="day_part m-0 pt-1">'.$one_part->users->count().'</a><br>';
+      $html[] = '<a href="'.route('calendar.admin.detail', ['date'=>$ymd,'part'=>'1']).'" class="day_part">1部 </a><a class="day_part m-0 pt-1">'.$one_part->users->count().'</a><br>';
     }
     if($two_part){
       // $html[] = '<a href="/calendar/{date}/{part}" class="day_part m-0 pt-1">2部</a><br>';

@@ -16,15 +16,15 @@ li {
   list-style: none;
 }
 
-.register_form {}
-
 
 /* サイドバー */
 .sidebar {
-  width: 150px;
-  height: 100vh;
+  width: 200px;
+  height: 130vh;
   background-color: #03AAD2;
   font-weight: bold;
+  padding-top: 15px;
+  padding-left: 5px;
 }
 
 .main-container {
@@ -52,7 +52,14 @@ li {
 .user_status {
   border-radius: 10px;
   background: #FFF;
+  box-shadow: 0 0 8px gray;
+  border-radius: 10px 10px 10px 10px;
 }
+
+.user_status_content {
+  font-size: 20px;
+}
+
 
 /* スクール予約関連 */
 .day-blank {
@@ -71,8 +78,13 @@ li {
   background: #EEE;
 }
 
-.calendar-td {
-  min-width: 100px;
+.calendar td {
+
+  text-align: center;
+  width: 100px;
+  height: 90px;
+  vertical-align: top;
+  position: relative;
 }
 
 .day_part {
@@ -80,9 +92,11 @@ li {
   font-size: 12px;
 }
 
-.adjust-table {
-  width: 70% !important;
+.day {
+  font-size: 13px;
 }
+
+
 
 .adjust-table td {
   padding: 0 !important;
@@ -95,6 +109,20 @@ li {
 .adjust-table-btn {
   width: 70%;
 }
+
+
+/* 予約登録残数、部数 */
+.adjust-table td,
+.adjust-area p,
+.adjust-table-btn {
+  font-size: 13px;
+}
+
+
+
+/* スクール参加者詳細画面 */
+
+
 
 /* モーダル */
 .modal {

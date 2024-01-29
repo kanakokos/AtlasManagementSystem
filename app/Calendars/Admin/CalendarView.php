@@ -48,7 +48,7 @@ class CalendarView{
           $html[] = '<td class="border '.$day->getClassName().'">';
         }
         //カレンダーの中身
-        $html[] = $day->render();  //日にち
+        $html[] = '<div style="margin-bottom:-15px;">'.$day->render().'</div>';  //日にち
         $html[] = $day->dayPartCounts($day->everyDay());  //部数
         // $html[] = '<a href="" value="'. $day->dayPartCounts($day->everyDay()).'"></a>';  //部数
         $html[] = '</td>';
