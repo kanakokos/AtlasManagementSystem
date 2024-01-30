@@ -48,6 +48,7 @@ li {
   align-items: center;
 }
 
+
 /* トップページ */
 .user_status {
   border-radius: 10px;
@@ -310,12 +311,10 @@ li {
 .reserve_users_area {
   display: flex;
   flex-wrap: wrap;
-  width: 800px;
+  width: 850px;
   margin: 10px auto;
-  height: 80vh;
   overflow: scroll;
   padding: 10px;
-  background: #FFF;
   border-radius: 5px;
 }
 
@@ -326,6 +325,7 @@ li {
 .one_person {
   width: 250px;
   height: 250px;
+  background: #FFF;
 }
 
 .search_conditions span {
@@ -334,7 +334,7 @@ li {
 
 .search_conditions_inner {
   display: none;
-  background: #FFF;
+
 }
 
 .subject_edit_btn {
@@ -345,4 +345,74 @@ li {
 
 .subject_inner {
   display: none;
+}
+
+
+/* ユーザー検索の検索エリアのスタイル */
+.search_area {
+  border-radius: 10px;
+  padding: 15px;
+  margin: 10px;
+}
+
+.search_area input[type="text"],
+.search_area select {
+  background-color: #E4E1E1;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.search_area label {
+  font-size: 14px;
+}
+
+.search_area input[type="submit"] {
+  background-color: #03AAD2;
+  color: #FFF;
+  border: none;
+  border-radius: 5px;
+  width: 300px;
+  padding: 10px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.search_area input[type="reset"] {
+  background: none;
+  color: #03AAD2;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 14px;
+  width: 300px;
+  margin-top: 20px;
+}
+
+.search_conditions_inner {
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.search_conditions span {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.selected_engineer {
+  margin-top: 10px;
+}
+
+.selected_engineer label {
+  display: inline-block;
+  margin-bottom: 5px;
+  margin-right: 10px;
+}
+
+.selected_engineer input[type="checkbox"] {
+  margin-right: 5px;
 }
