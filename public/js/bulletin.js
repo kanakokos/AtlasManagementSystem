@@ -64,3 +64,11 @@ $(function () {
   });
 
 });
+
+
+function toggleSubCategories(category) {
+  const subCategories = category.nextElementSibling;
+  const icon = category.querySelector('.icon');
+  subCategories.style.display = subCategories.style.display === 'none' ? 'block' : 'none';
+  icon.textContent = subCategories.style.display === 'block' ? '▲' : '▼';
+}

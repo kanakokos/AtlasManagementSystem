@@ -2,18 +2,19 @@
 @section('content')
 <div class="vh-100 d-flex">
   <div class="w-50 mt-5">
-    <div class="m-3 detail_container">
+    <div class="m-3 detail_container" style="border-radius: 10px;">
       <div class="p-3">
-        <div class="detail_inner_head">
-          <div>
-          </div>
-          <div>
 @foreach($errors->all() as $error)
-          <div class="post-error" style="font-size: 13px; color: red;">{{$error}}</div>
+        <div class="post-error" style="font-size: 13px; color: red;">{{$error}}</div>
 @endforeach
+        <div class="detail_inner_head">
+@foreach($post->subCategories as $subCategory)
+          <p class="category_btn">{{ $subCategory->sub_category }}</p>
+@endforeach
+          <div>
 @if(Auth::id()==$post->user_id)
-            <span class="edit-modal-open" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
-            <a href="{{ route('post.delete', ['id' => $post->id]) }}" onclick="return confirm('削除してよろしいですか？')">削除</a>
+            <span class="edit-modal-open btn btn-primary" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
+            <a href="{{ route('post.delete', ['id' => $post->id]) }}" onclick="return confirm('削除してよろしいですか？')"class="btn btn-danger">削除</a>
 @endif
           </div>
         </div>
@@ -28,9 +29,6 @@
         </div>
         <div class="detsail_post_title">{{ $post->post_title }}</div>
         <div class="mt-3 detsail_post">{{ $post->post }}</div>
-        @foreach($post->subCategories as $subCategory)
-        <div>カテゴリー：{{ $subCategory->sub_category }}</div>
-        @endforeach
       </div>
       <div class="p-3">
         <div class="comment_container">
@@ -50,7 +48,7 @@
     </div>
   </div>
   <div class="w-50 p-3">
-    <div class="comment_container border m-5">
+    <div class="comment_container border m-5" style="border-radius: 10px;">
       <div class="comment_area p-3">
         <p class="m-0">コメントする</p>
         <textarea class="w-100" name="comment" form="commentRequest"></textarea>

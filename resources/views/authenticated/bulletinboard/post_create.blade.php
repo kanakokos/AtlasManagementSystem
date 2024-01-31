@@ -51,9 +51,9 @@
         @endif
         <p class="m-0">メインカテゴリー</p>
         <input type="text" class="w-100" name="main_category_name" form="mainCategoryRequest">
-        <input type="submit" value="追加" class="w-100 btn btn-primary p-0" form="mainCategoryRequest">
+        <input type="submit" value="追加" class="w-100 btn btn-primary p-0" form="mainCategoryRequest" style="margin-top:10px">
       </div>
-      <form action="{{ route('main.category.create') }}" method="post" id="mainCategoryRequest">{{ csrf_field() }}</form>
+      <form action="{{ route('main.category.create') }}" method="post" id="mainCategoryRequest"style="margin-bottom:30px">{{ csrf_field() }}</form>
 
       <div class="">
         @if($errors->has('main_category_id'))
@@ -73,8 +73,8 @@
             <option value="{{ $main_category->id }}">{{ $main_category->main_category }}</option>
           @endforeach
         </select>
-        <input type="text" class="w-100" name="sub_category_name" form="subCategoryRequest">
-        <input type="submit" value="追加" class="w-100 btn btn-primary p-0" form="subCategoryRequest">
+        <input type="text" class="w-100" name="sub_category_name" form="subCategoryRequest" style="margin-top:10px">
+        <input type="submit" value="追加" class="w-100 btn btn-primary p-0" form="subCategoryRequest" style="margin-top:10px">
       </div>
       <form action="{{ route('sub.category.create') }}" method="post" id="subCategoryRequest">{{ csrf_field() }}</form>
     </div>
