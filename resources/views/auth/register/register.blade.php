@@ -15,8 +15,8 @@
 <body>
   <div style="background-color: #EEEEEE;">
   <form action="{{ route('registerPost') }}" method="POST">
-    <div class="w-100 vh-100 d-flex" style="align-items:center; justify-content:center;">
-      <div class="w-25 vh-75 border p-3 blockquote" style="background-color: #FFFFFF;">
+    <div class="w-100 vh-100 d-flex" style="align-items:center; justify-content:center; overflow:auto;">
+      <div class="w-25 vh-75 border p-3 blockquote" style="background-color: #FFFFFF; margin-top:50px;">
         <div class="register_form" style="width:170px;">
             <div class="d-flex mt-3" style="justify-content:space-between;">
               <div class="" style="width:350px;">

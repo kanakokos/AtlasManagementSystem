@@ -96,9 +96,9 @@
             </select>
           </div>
           <div class="selected_engineer">
-            <label style="color:#6C6C78;">選択科目</label>
+            <label style="color:#6C6C78;">選択科目</label><br>
             @foreach($subjects as $subject)
-              <div class="">
+              <div class="" style="display: inline-block;">
               <input type="checkbox" name="subject[]" value="{{ $subject->id }}" form="userSearchRequest">
               <label>{{ $subject->subject }}</label>
             </div>

@@ -419,6 +419,9 @@ li {
   display: none;
 }
 
+.subject {
+  display: inline-block;
+}
 
 /* ユーザー検索の検索エリアのスタイル */
 .search_area {
