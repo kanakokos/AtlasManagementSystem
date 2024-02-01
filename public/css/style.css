@@ -11,6 +11,9 @@
   background: #ECF1F6;
 }
 
+
+
+
 ul,
 li {
   list-style: none;
@@ -19,8 +22,9 @@ li {
 
 /* サイドバー */
 .sidebar {
+  position: fixed;
   width: 200px;
-  height: 130vh;
+  height: 100vh;
   background-color: #03AAD2;
   font-weight: bold;
   padding-top: 15px;
@@ -28,7 +32,8 @@ li {
 }
 
 .main-container {
-  width: 100%;
+  width: 80%;
+  margin-left: 200px;
 }
 
 .sidebar p a {

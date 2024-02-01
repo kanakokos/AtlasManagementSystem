@@ -9,10 +9,10 @@
       <p style="color:gray;"><span style="color: gray;">{{ $post->user->over_name }}</span><span class="ml-3"  style="color: gray;">{{ $post->user->under_name }}</span>さん</p>
       <p><a href="{{ route('post.detail', ['id' => $post->id]) }}" style="color: black;">{{ $post->post_title }}</a></p>
       <div class="post_bottom_area">
-        <div class="d-flex post_status">
-          @foreach($post->subCategories as $subCategory)
+        @foreach($post->subCategories as $subCategory)
             <p class="category_btn">{{ $subCategory->sub_category }}</p>
           @endforeach
+        <div class="d-flex post_status">
           <div class="mr-5 count">
             <i class="fa fa-comment"></i><span class="">{{ $post->commentCount() }}</span>
           </div>

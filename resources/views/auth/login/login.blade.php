@@ -18,7 +18,7 @@
       <div>
         <div style="background-color: #EEEEEE;">
           <div class="atlas_logo w-100 vh-100 d-flex" style="align-items:center; justify-content:center;">
-          <img src="image/atlas-black.png"  width="200px" height="auto" style="margin-bottom: 30px;">
+          <img src="{{ asset('image/atlas-black.png') }}"  width="200px" height="auto" style="margin-bottom: 30px;">
         <div class="border vh-50 w-25 blockquote"  style="background-color: #FFFFFF;">
           <div class="w-75 m-auto pt-5">
             <label class="d-block m-0" style="font-size:13px;">メールアドレス</label>
